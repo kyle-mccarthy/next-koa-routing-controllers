@@ -1,8 +1,8 @@
 {
-  "name": "josh-newman",
+  "name": "next-koa-routing-controllers",
   "version": "1.0.0",
   "main": "server/index.ts",
-  "repository": "https://github.com/kyle-mccarthy/josh-newman",
+  "repository": "https://github.com/kyle-mccarthy/next-koa-routing-controllers",
   "author": "Kyle McCarthy",
   "license": "MIT",
   "private": true,
