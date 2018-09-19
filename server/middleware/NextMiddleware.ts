@@ -4,8 +4,10 @@ import { KoaMiddlewareInterface, Middleware } from 'routing-controllers';
 export default class NextMiddleware implements KoaMiddlewareInterface {
 
   public async use(context: any, next: (err?: any) => any) {
-    await context.nextHandler(context.req, context.res);
     context.respond = false;
+    if (context.res.finished !== true) {
+      await context.nextHandler(context.req, context.res);
+    }
     await next();
   }
 }

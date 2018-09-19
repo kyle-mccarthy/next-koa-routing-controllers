@@ -2,8 +2,8 @@ import { default as Koa } from 'koa';
 import { useKoaServer} from 'routing-controllers';
 
 import { IContext } from '@server/types';
-import compress from 'koa-compress';
-import helmet from 'koa-helmet';
+// import compress from 'koa-compress';
+// import helmet from 'koa-helmet';
 import serve from 'koa-static';
 import { default as Next } from 'next';
 import { resolve } from 'path';
@@ -16,20 +16,21 @@ app.prepare().then(async () => {
   const server = new Koa();
 
   //  bootstrap koa middleware
-  server
-   .use(compress({
-     threshold: 256,
-   }))
-   .use(helmet({
-     frameguard: false,
-   }))
-   .use(serve('/static', {
-     defer: true,
+  // server
+  //  .use(compress({
+  //    threshold: 256,
+  //  }))
+  //  .use(helmet({
+  //    frameguard: false,
+  //  }))
+  server.use(serve('/static', {
    }));
-  server.use(async (ctx: any, next: () => any) => {
-     ctx.status = 200;
-     await next();
-   });
+
+  // server.use(async (ctx: any, next: () => any) => {
+  //    ctx.status = 200;
+  //    ctx.respond = false;
+  //    await next();
+  //  });
 
   useKoaServer(server, {
     controllers: [resolve(__dirname, './controllers/**/*')],

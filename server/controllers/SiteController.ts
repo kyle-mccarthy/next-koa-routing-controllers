@@ -5,7 +5,8 @@ import { Controller, Ctx, Get } from 'routing-controllers';
 export default class SiteController {
 
   @Get('/')
-  public async index(@Render() render: Renderer, @Ctx() context: any) {
+  public async index(@Render() render: Renderer, @Ctx() ctx: any) {
+    ctx.response.status = 200;
     await render('/Index');
   }
 
